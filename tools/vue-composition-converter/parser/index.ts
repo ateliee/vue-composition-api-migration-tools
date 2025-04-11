@@ -134,7 +134,8 @@ class Parser {
 		const results : {[key: string] : any} = {};
 		const propertiesName = Object.keys(this.callbacksMap);
 
-		const { properties } = exportDeclaration.declaration;
+		const declaration = exportDeclaration.declaration;
+		const properties = declaration.properties || declaration.arguments[0].properties;
 		for (const propertyName of propertiesName){
 			const property = properties.find((property: any) => {
 				const { name } = property.key;

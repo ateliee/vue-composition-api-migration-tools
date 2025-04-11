@@ -3,3 +3,4 @@ dist
 coverage
 cache
 .vscode/settings.json
+.qodo
