@@ -267,6 +267,7 @@ worker.addEventListener('message', (event: any) => {
 const processCode = () => {
 	const { scriptContent, templateContent, styleContent, styleAttributes } = parseSfc(userInput.value);
 
+	console.info(styleContent)
 	errorMessage.value = '';
 
 	if (!scriptContent){

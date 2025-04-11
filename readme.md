@@ -113,3 +113,10 @@ watch(disabled, function (value) {
 }
 </style>
 ```
+
+### CLI tools
+
+convert Option API to Composition API
+```
+npm run convert example/test.vue
+```

@@ -47,15 +47,15 @@ const parseSfc = (sfcContent:string) => {
  */
 const composeSfc = (
 	scriptContent:string,
-	templateContent:string,
-	styleContent:string,
-	styleAttributes:string
+	templateContent?:string,
+	styleContent?:string,
+	styleAttributes?:string
 ) => {
-	const templateSfc = `<template>${templateContent}</template>`;
-	let scriptSfc = `&lt;script setup&gt;\n${scriptContent}\n&lt;/script&gt;`;
-	const styleSfc = `<style ${styleAttributes}>${styleContent}</style>`;
+	const templateSfc = templateContent ? `<template>${templateContent}</template>` : '';
+	let scriptSfc = `&lt;script lang="ts" setup&gt;\n${scriptContent}\n&lt;/script&gt;`;
+	const styleSfc = styleContent && styleAttributes ? `<style ${styleAttributes}>${styleContent}</style>` : '';
 	scriptSfc = scriptSfc.replaceAll('&lt;', '<').replaceAll('&gt;', '>');
-	return [templateSfc, scriptSfc, styleSfc].join('\n\n');
+	return [templateSfc, scriptSfc, styleSfc].filter(s => s).join('\n\n');
 };
 
 export { parseSfc, composeSfc };
